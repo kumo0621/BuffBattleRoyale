@@ -11,6 +11,7 @@ public class BuffBattleRoyale extends JavaPlugin {
         // BuffManager の起動（ポーション効果の更新）
         BuffManager.getInstance().start(this);
         this.saveDefaultConfig();
+        BuffChestManager buffChestManager = new BuffChestManager(this);
         BuffManager.getInstance().start(this);
         // コマンド "buffitem" の登録（タブ補完付き）
         GiveBuffItemCommand giveCommand = new GiveBuffItemCommand();
@@ -31,12 +32,13 @@ public class BuffBattleRoyale extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ShiftZombieSummonListener(), this);
         getServer().getPluginManager().registerEvents(new ShiftSkeletonSummonListener(), this);
         getServer().getPluginManager().registerEvents(new ShiftChibiZombieSummonListener(), this);
-        getServer().getPluginManager().registerEvents(new ShiftProjectileBuffListener(), this);
+        getServer().getPluginManager().registerEvents(new ShiftBowBuffListener(), this);
         getServer().getPluginManager().registerEvents(new ShiftInvisibleListener(), this);
-
+        this.getCommand("fillchest").setExecutor(new FillChestCommand(buffChestManager));
         buffChestManager = new BuffChestManager(this);
         buffChestManager.start();
         getServer().getPluginManager().registerEvents(new ChestOpenListener(this), this);
+        getServer().getPluginManager().registerEvents(new FireChargeOnDamageListener(), this);
         getLogger().info("BuffBattleRoyale プラグインが有効になりました。");
     }
 

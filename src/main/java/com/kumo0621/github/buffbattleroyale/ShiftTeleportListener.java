@@ -17,8 +17,8 @@ import java.util.Map;
 
 public class ShiftTeleportListener implements Listener {
     // 有効なバフスロット（9～17番）
-    private final int BUFF_SLOT_START = 9;
-    private final int BUFF_SLOT_END = 17;
+    private final int BUFF_SLOT_START = 0;
+    private final int BUFF_SLOT_END = 8;
 
     // プレイヤーごとのシフト開始時刻と ActionBar 用タスクを保持
     private final Map<UUID, Long> sneakStartTimes = new HashMap<>();

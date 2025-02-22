@@ -21,8 +21,8 @@ public class ShiftInvisibleListener implements Listener {
     private final Map<UUID, BukkitTask> invisibleTasks = new HashMap<>();
 
     // 対象スロット：9～17番
-    private static final int BUFF_SLOT_START = 9;
-    private static final int BUFF_SLOT_END = 17;
+    private static final int BUFF_SLOT_START = 0;
+    private static final int BUFF_SLOT_END = 8;
     // 対象バフアイテムのID
     private static final String SHIFT_INVISIBLE_BUFF_ID = "shiftinvisible";
 

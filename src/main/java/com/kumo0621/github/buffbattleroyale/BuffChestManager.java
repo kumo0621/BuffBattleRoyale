@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Chest;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -13,6 +12,7 @@ import org.bukkit.scheduler.BukkitTask;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class BuffChestManager {
@@ -26,53 +26,50 @@ public class BuffChestManager {
         loadConfig();
     }
 
-    // config.yml から複数のチェスト座標を読み込む
+    // config.yml の "chests" リスト形式に対応して、複数のチェスト座標を読み込む
     private void loadConfig() {
         FileConfiguration config = plugin.getConfig();
-        ConfigurationSection chestsSection = config.getConfigurationSection("chests");
-        if (chestsSection == null) {
-            plugin.getLogger().warning("No 'chests' section found in config.yml!");
+        List<?> chestList = config.getList("chests");
+        if (chestList == null) {
+            plugin.getLogger().warning("No 'chests' list found in config.yml!");
             return;
         }
-        // chests セクション内の各キー（リスト形式の場合は自動的に数値のキーが振られます）
-        for (String key : chestsSection.getKeys(false)) {
-            String worldName = chestsSection.getString(key + ".world", "world");
-            World world = Bukkit.getWorld(worldName);
-            if (world == null) {
-                plugin.getLogger().warning("World " + worldName + " not found for chest " + key);
-                continue;
+        for (Object obj : chestList) {
+            if (obj instanceof Map) {
+                @SuppressWarnings("unchecked")
+                Map<String, Object> map = (Map<String, Object>) obj;
+                String worldName = (String) map.getOrDefault("world", "world");
+                World world = Bukkit.getWorld(worldName);
+                if (world == null) {
+                    plugin.getLogger().warning("World " + worldName + " not found!");
+                    continue;
+                }
+                double x = getDouble(map.get("x"), 0);
+                double y = getDouble(map.get("y"), 64);
+                double z = getDouble(map.get("z"), 0);
+                Location loc = new Location(world, x, y, z);
+                chestLocations.add(loc);
             }
-            double x = chestsSection.getDouble(key + ".x", 0);
-            double y = chestsSection.getDouble(key + ".y", 64);
-            double z = chestsSection.getDouble(key + ".z", 0);
-            Location loc = new Location(world, x, y, z);
-            chestLocations.add(loc);
         }
         if(chestLocations.isEmpty()){
             plugin.getLogger().warning("No valid chest locations found in config.yml!");
         }
     }
 
+    private double getDouble(Object obj, double def) {
+        if (obj instanceof Number) {
+            return ((Number) obj).doubleValue();
+        }
+        try {
+            return Double.parseDouble(String.valueOf(obj));
+        } catch (NumberFormatException e) {
+            return def;
+        }
+    }
+
+    // ※既存の自動投入タスクは不要の場合、start()/stop() を省略してもよいです。
     public void start() {
-        // 例：30秒ごとに、各チェストに対して各バフアイテムの chance に基づきアイテムを追加する
-        task = Bukkit.getScheduler().runTaskTimer(plugin, () -> {
-            if (chestLocations.isEmpty()) return;
-            for (Location loc : chestLocations) {
-                if (!(loc.getBlock().getState() instanceof Chest)) {
-                    plugin.getLogger().warning("No chest found at " + loc);
-                    continue;
-                }
-                Chest chest = (Chest) loc.getBlock().getState();
-                Inventory inv = chest.getInventory();
-                for (BuffItemData buffData : BuffRegistry.getRegisteredBuffItems()) {
-                    double chance = buffData.getChance();
-                    if (chance < 1.0 && random.nextDouble() < chance) {
-                        ItemStack item = buffData.createItemStack();
-                        inv.addItem(item);
-                    }
-                }
-            }
-        }, 0L, 600L); // 600 tick = 30秒
+        // ここでは自動投入タスクは実行せず、コマンド実行時に投入する仕様とします。
     }
 
     public void stop() {
@@ -80,5 +77,10 @@ public class BuffChestManager {
             task.cancel();
             task = null;
         }
+    }
+
+    // 外部からチェスト座標リストを参照できるように getter を追加
+    public List<Location> getChestLocations() {
+        return chestLocations;
     }
 }

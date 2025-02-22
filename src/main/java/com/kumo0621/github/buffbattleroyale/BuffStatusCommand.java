@@ -19,8 +19,8 @@ import org.bukkit.potion.PotionEffectType;
 public class BuffStatusCommand implements CommandExecutor {
 
     // 対象とするスロット（9～17番）
-    private static final int BUFF_SLOT_START = 9;
-    private static final int BUFF_SLOT_END = 17;
+    private static final int BUFF_SLOT_START = 0;
+    private static final int BUFF_SLOT_END = 8;
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

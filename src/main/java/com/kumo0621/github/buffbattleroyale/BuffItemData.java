@@ -8,7 +8,7 @@ import org.bukkit.potion.PotionEffectType;
 /**
  * バフアイテムのデータを保持するクラスです。
  * 各項目として、ID、素材、custom model data、付与するPotionEffectType、
- * 表示名、バフレベル、任意の特殊効果、さらに発生確率 (chance) を管理します。
+ * 表示名、バフレベル、特殊効果、発生確率、さらに詳細情報 (details) を管理します。
  */
 public class BuffItemData {
     private final String id;
@@ -18,16 +18,18 @@ public class BuffItemData {
     private final String displayName;
     private final int buffLevel;  // 例：1なら実際の効果は amplifier 0、2なら 1 となる。
     private final SpecialEffect specialEffect; // 特殊効果。通常のバフは null。
-    private final double chance; // 例：0.1 は10%の確率でチェストに入れる
+    private final double chance; // 例：0.10 は10%の確率
+    private final String details; // 詳細情報
 
     // フルコンストラクタ
     public BuffItemData(String id, Material material, int customModelData, PotionEffectType effectType,
-                        String displayName, int buffLevel, SpecialEffect specialEffect, double chance) {
+                        String displayName, String details, int buffLevel, SpecialEffect specialEffect, double chance) {
         this.id = id;
         this.material = material;
         this.customModelData = customModelData;
         this.effectType = effectType;
         this.displayName = displayName;
+        this.details = details;
         this.buffLevel = buffLevel;
         this.specialEffect = specialEffect;
         this.chance = chance;
@@ -35,8 +37,8 @@ public class BuffItemData {
 
     // 特殊効果不要の場合のコンストラクタ
     public BuffItemData(String id, Material material, int customModelData, PotionEffectType effectType,
-                        String displayName, int buffLevel, double chance) {
-        this(id, material, customModelData, effectType, displayName, buffLevel, null, chance);
+                        String displayName, String details, int buffLevel, double chance) {
+        this(id, material, customModelData, effectType, displayName, details, buffLevel, null, chance);
     }
 
     public String getId() {
@@ -69,6 +71,10 @@ public class BuffItemData {
 
     public double getChance() {
         return chance;
+    }
+
+    public String getDetails() {
+        return details;
     }
 
     /**

@@ -21,8 +21,8 @@ public class ShiftZombieSummonListener implements Listener {
     private final Map<UUID, BukkitTask> chargeTasks = new HashMap<>();
 
     private static final String SHIFT_ZOMBIE_BUFF_ID = "shiftzombie";
-    private static final int BUFF_SLOT_START = 9;
-    private static final int BUFF_SLOT_END = 17;
+    private static final int BUFF_SLOT_START = 0;
+    private static final int BUFF_SLOT_END = 8;
 
     @EventHandler
     public void onPlayerToggleSneak(PlayerToggleSneakEvent event) {

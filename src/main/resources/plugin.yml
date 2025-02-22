@@ -11,7 +11,10 @@ commands:
     description: 現在装備しているバフ効果を表示するコマンド
     usage: /buffstatus
     permission: buffbattleroyale.use
-
+  fillchest:
+    description: 設定されたチェストにランダムなバフアイテムを１点投入します
+    usage: /fillchest
+    permission: buffbattleroyale.use
 permissions:
   buffbattleroyale.use:
     description: BuffBattleRoyale のコマンドを使用できる権限 (OP のみ)

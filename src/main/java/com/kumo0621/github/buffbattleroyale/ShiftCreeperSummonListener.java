@@ -26,8 +26,8 @@ public class ShiftCreeperSummonListener implements Listener {
     private final Map<UUID, BukkitTask> chargeTasks = new HashMap<>();
 
     // 対象スロット（9～17番）
-    private static final int BUFF_SLOT_START = 9;
-    private static final int BUFF_SLOT_END = 17;
+    private static final int BUFF_SLOT_START = 0;
+    private static final int BUFF_SLOT_END = 8;
 
     // 召喚バフとして登録している buff ID の一覧
     private static final String[] SUMMON_BUFF_IDS = {

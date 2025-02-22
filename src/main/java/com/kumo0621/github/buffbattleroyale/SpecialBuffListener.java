@@ -13,8 +13,8 @@ import org.bukkit.inventory.ItemStack;
  */
 public class SpecialBuffListener implements Listener {
     // 対象スロット（9～17番）
-    private final int BUFF_SLOT_START = 9;
-    private final int BUFF_SLOT_END = 17;
+    private final int BUFF_SLOT_START = 0;
+    private final int BUFF_SLOT_END = 8;
 
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
