@@ -61,39 +61,40 @@ public class BuffRegistry {
     // 静的初期化子：ここでバフアイテムを登録
     static {
         // Speed Buff
-        registerBuffItem(new BuffItemData("speed", Material.PAPER, 1, PotionEffectType.SPEED, "Speed Buff", 1));
-        registerBuffItem(new BuffItemData("speed2", Material.PAPER, 2, PotionEffectType.SPEED, "Speed Buff (Level 2)", 2));
+        registerBuffItem(new BuffItemData("speed", Material.PAPER, 1, PotionEffectType.SPEED, "Speed Buff", 1,0.10));
+        registerBuffItem(new BuffItemData("speed2", Material.PAPER, 2, PotionEffectType.SPEED, "Speed Buff (Level 2)", 2,0.10));
 
         // 攻撃力バフ（Attack：INCREASE_DAMAGE）
-        registerBuffItem(new BuffItemData("attack", Material.PAPER, 3, PotionEffectType.INSTANT_DAMAGE, "Attack Buff", 1));
-        registerBuffItem(new BuffItemData("attack2", Material.PAPER, 4, PotionEffectType.INSTANT_DAMAGE, "Attack Buff (Level 2)", 2));
+        registerBuffItem(new BuffItemData("attack", Material.PAPER, 3, PotionEffectType.INSTANT_DAMAGE, "Attack Buff", 1,0.10));
+        registerBuffItem(new BuffItemData("attack2", Material.PAPER, 4, PotionEffectType.INSTANT_DAMAGE, "Attack Buff (Level 2)", 2,0.10));
 
         // 再生バフ（Resistance：DAMAGE_RESISTANCE）
-        registerBuffItem(new BuffItemData("heel", Material.PAPER, 5, PotionEffectType.REGENERATION, "Resistance Buff", 1));
-        registerBuffItem(new BuffItemData("heel2", Material.PAPER, 6, PotionEffectType.REGENERATION, "Resistance Buff (Level 2)", 2));
+        registerBuffItem(new BuffItemData("heel", Material.PAPER, 5, PotionEffectType.REGENERATION, "Resistance Buff", 1,0.10));
+        registerBuffItem(new BuffItemData("heel2", Material.PAPER, 6, PotionEffectType.REGENERATION, "Resistance Buff (Level 2)", 2,0.10));
 
         // ジャンプバフ（Jump：JUMP）
-        registerBuffItem(new BuffItemData("jump", Material.PAPER, 7, PotionEffectType.JUMP_BOOST, "Jump Buff", 1));
-        registerBuffItem(new BuffItemData("jump2", Material.PAPER, 8, PotionEffectType.JUMP_BOOST, "Jump Buff (Level 2)", 2));
+        registerBuffItem(new BuffItemData("jump", Material.PAPER, 7, PotionEffectType.JUMP_BOOST, "Jump Buff", 1,0.10));
+        registerBuffItem(new BuffItemData("jump2", Material.PAPER, 8, PotionEffectType.JUMP_BOOST, "Jump Buff (Level 2)", 2,0.10));
 
         // 浮遊バフ（Levitation：LEVITATION）
-        registerBuffItem(new BuffItemData("levitation", Material.PAPER, 9, PotionEffectType.LEVITATION, "Levitation Buff", 1));
-        registerBuffItem(new BuffItemData("levitation2", Material.PAPER, 10, PotionEffectType.LEVITATION, "Levitation Buff (Level 2)", 2));
+        registerBuffItem(new BuffItemData("levitation", Material.PAPER, 9, PotionEffectType.LEVITATION, "Levitation Buff", 1,0.10));
+        registerBuffItem(new BuffItemData("levitation2", Material.PAPER, 10, PotionEffectType.LEVITATION, "Levitation Buff (Level 2)", 2,0.10));
 
         // Lethal Hit Buff（特殊効果のみ：殴ったら1%の確率で相手を殺す）
         // ポーション効果は付与しないため、effectType は null、buffLevel は 0 としています。
-        registerBuffItem(new BuffItemData("lethal", Material.PAPER, 11, null, "Lethal Hit Buff", 0, new LethalHitEffect(0.01)));
+        registerBuffItem(new BuffItemData("lethal", Material.PAPER, 11, null, "Lethal Hit Buff", 0, new LethalHitEffect(0.01),0.10));
         //テレポート
-        registerBuffItem(new BuffItemData("teleport", Material.PAPER, 12, null, "Teleport Buff", 1, null));
+        registerBuffItem(new BuffItemData("teleport", Material.PAPER, 12, null, "Teleport Buff", 1, null,0.10));
 
         //耐性
-        registerBuffItem(new BuffItemData("resistance", Material.PAPER, 13, PotionEffectType.RESISTANCE, "Resistance Buff", 1));
-        registerBuffItem(new BuffItemData("resistance2", Material.PAPER, 14, PotionEffectType.RESISTANCE, "Resistance Buff (Level 2)", 2));
-        registerBuffItem(new BuffItemData("shiftcreeper", Material.PAPER, 15, null, "Shift Creeper Summon Buff", 1));
-        registerBuffItem(new BuffItemData("shiftzombie", Material.PAPER, 16, null, "Shift Zombie Summon Buff", 1));
-        registerBuffItem(new BuffItemData("shiftskeleton", Material.PAPER, 17, null, "Shift Skeleton Summon Buff", 1));
-        registerBuffItem(new BuffItemData("shiftbabyzombie", Material.PAPER, 18, null, "Shift Baby Zombie Summon Buff", 1));
-        registerBuffItem(new BuffItemData("shiftfirecharge", Material.PAPER, 19, null, "Shift Fire Charge Buff", 1));
-        registerBuffItem(new BuffItemData("shiftbow", Material.PAPER, 20, null, "Shift Bow Buff", 1));
+        registerBuffItem(new BuffItemData("resistance", Material.PAPER, 13, PotionEffectType.RESISTANCE, "Resistance Buff", 1,0.10));
+        registerBuffItem(new BuffItemData("resistance2", Material.PAPER, 14, PotionEffectType.RESISTANCE, "Resistance Buff (Level 2)", 2,0.10));
+        registerBuffItem(new BuffItemData("shiftcreeper", Material.PAPER, 15, null, "Shift Creeper Summon Buff", 1,0.10));
+        registerBuffItem(new BuffItemData("shiftzombie", Material.PAPER, 16, null, "Shift Zombie Summon Buff", 1,0.10));
+        registerBuffItem(new BuffItemData("shiftskeleton", Material.PAPER, 17, null, "Shift Skeleton Summon Buff", 1,0.10));
+        registerBuffItem(new BuffItemData("shiftbabyzombie", Material.PAPER, 18, null, "Shift Baby Zombie Summon Buff", 1,0.10));
+        registerBuffItem(new BuffItemData("shiftfirecharge", Material.PAPER, 19, null, "Shift Fire Charge Buff", 1,0.10));
+        registerBuffItem(new BuffItemData("shiftbow", Material.PAPER, 20, null, "Shift Bow Buff", 1,0.10));
+        registerBuffItem(new BuffItemData("shiftinvisible", Material.PAPER, 21, null, "Shift Invisible Buff", 1,0.10));
     }
 }
