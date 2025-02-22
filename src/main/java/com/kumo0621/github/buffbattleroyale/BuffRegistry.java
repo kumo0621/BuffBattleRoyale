@@ -96,5 +96,6 @@ public class BuffRegistry {
         registerBuffItem(new BuffItemData("firecharge", Material.PAPER, 19, null, "ファイヤーチャージ発射","ダメージを受けるとファイヤーチャージを全方向に放つ", 1,0.10));
         registerBuffItem(new BuffItemData("shiftbow", Material.PAPER, 20, null, "矢召喚","シフトをちょっと長く押すと矢が出る。", 1,0.10));
         registerBuffItem(new BuffItemData("shiftinvisible", Material.PAPER, 21, null, "透明化","シフトを押している間透明化する",1,0.10));
+        registerBuffItem(new BuffItemData("shiftfillchest", Material.PAPER, 22, null,"アイテム出現","3分間シフトを押すとアイテムが手に入る", 1,0.10));
     }
 }

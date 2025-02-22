@@ -39,6 +39,7 @@ public class BuffBattleRoyale extends JavaPlugin {
         buffChestManager.start();
         getServer().getPluginManager().registerEvents(new ChestOpenListener(this), this);
         getServer().getPluginManager().registerEvents(new FireChargeOnDamageListener(), this);
+        getServer().getPluginManager().registerEvents(new ShiftFillChestListener(), this);
         getLogger().info("BuffBattleRoyale プラグインが有効になりました。");
     }
 
