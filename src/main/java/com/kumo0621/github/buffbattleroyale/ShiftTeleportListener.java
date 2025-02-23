@@ -94,9 +94,12 @@ public class ShiftTeleportListener implements Listener {
         for (int slot = BUFF_SLOT_START; slot <= BUFF_SLOT_END; slot++) {
             ItemStack item = player.getInventory().getItem(slot);
             if (item != null) {
-                BuffItemData buff = BuffRegistry.getBuffItemById("teleport");
-                if (buff != null && buff.matches(item)) {
-                    count++;
+                if (player.getInventory().getItemInMainHand() != null &&
+                    BuffRegistry.getBuffItemById("teleport").matches(player.getInventory().getItemInMainHand())) {
+                    BuffItemData buff = BuffRegistry.getBuffItemById("teleport");
+                    if (buff != null && buff.matches(item)) {
+                        count++;
+                    }
                 }
             }
         }

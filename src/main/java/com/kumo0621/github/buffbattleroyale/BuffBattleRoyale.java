@@ -41,6 +41,8 @@ public class BuffBattleRoyale extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FireChargeOnDamageListener(), this);
         getServer().getPluginManager().registerEvents(new ShiftFillChestListener(), this);
         getServer().getPluginManager().registerEvents(new ShiftDashListener(), this);
+        getServer().getPluginManager().registerEvents(new GlobalGlowListener(), this);
+
         getLogger().info("BuffBattleRoyale プラグインが有効になりました。");
     }
 

@@ -72,9 +72,12 @@ public class ShiftFillChestListener implements Listener {
         for (int slot = BUFF_SLOT_START; slot <= BUFF_SLOT_END; slot++) {
             ItemStack item = player.getInventory().getItem(slot);
             if (item != null) {
-                BuffItemData data = BuffRegistry.getBuffItemById(FILL_CHEST_BUFF_ID);
-                if (data != null && data.matches(item)) {
-                    return true;
+                if (player.getInventory().getItemInMainHand() != null &&
+                    BuffRegistry.getBuffItemById(FILL_CHEST_BUFF_ID).matches(player.getInventory().getItemInMainHand())) {
+                    BuffItemData data = BuffRegistry.getBuffItemById(FILL_CHEST_BUFF_ID);
+                    if (data != null && data.matches(item)) {
+                        return true;
+                    }
                 }
             }
         }

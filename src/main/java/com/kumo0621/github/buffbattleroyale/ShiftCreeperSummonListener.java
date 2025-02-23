@@ -91,9 +91,15 @@ public class ShiftCreeperSummonListener implements Listener {
         for (int slot = BUFF_SLOT_START; slot <= BUFF_SLOT_END; slot++) {
             ItemStack item = player.getInventory().getItem(slot);
             if (item != null) {
-                BuffItemData data = BuffRegistry.getBuffItemById(buffId);
-                if (data != null && data.matches(item)) {
-                    count++;
+                if (player.getInventory().getItemInMainHand() != null &&
+                        java.util.Arrays.stream(SUMMON_BUFF_IDS)
+                                .map(BuffRegistry::getBuffItemById)
+                                .filter(java.util.Objects::nonNull)
+                                .anyMatch(data -> data.matches(player.getInventory().getItemInMainHand()))) {
+                                    BuffItemData data = BuffRegistry.getBuffItemById(buffId);
+                                    if (data != null && data.matches(item)) {
+                                        count++;
+                                    }
                 }
             }
         }

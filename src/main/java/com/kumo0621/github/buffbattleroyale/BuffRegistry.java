@@ -98,5 +98,9 @@ public class BuffRegistry {
         registerBuffItem(new BuffItemData("shiftinvisible", Material.PAPER, 21, null, "透明化","シフトを押している間透明化する",1,0.10));
         registerBuffItem(new BuffItemData("shiftfillchest", Material.PAPER, 22, null,"アイテム出現","3分間シフトを押すとアイテムが手に入る", 1,0.10));
         registerBuffItem(new BuffItemData("shiftdash", Material.PAPER, 23, null, "壁抜け","15マス前に移動する。（壁にも埋まる）", 1,0.10));
+        registerBuffItem(new BuffItemData("shiftglobalglow", Material.PAPER, 18, null, "全員強制発光","全員を発光させる", 1,0.10));
+        // 新規：発行拒否バフ（custom model data 19 例示）
+        registerBuffItem(new BuffItemData("glowreject", Material.PAPER, 19, null, "発光禁止","自身にかかる発光をキャンセルできる", 1,0.10));
     }
+
 }

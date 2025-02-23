@@ -102,9 +102,12 @@ public class ShiftBowBuffListener implements Listener {
         for (int slot = BUFF_SLOT_START; slot <= BUFF_SLOT_END; slot++) {
             ItemStack item = player.getInventory().getItem(slot);
             if (item != null) {
-                BuffItemData data = BuffRegistry.getBuffItemById(buffId);
-                if (data != null && data.matches(item)) {
-                    count++;
+                if (player.getInventory().getItemInMainHand() != null &&
+                    BuffRegistry.getBuffItemById(SHIFT_BOWBUFF_ID).matches(player.getInventory().getItemInMainHand())) {
+                    BuffItemData data = BuffRegistry.getBuffItemById(buffId);
+                    if (data != null && data.matches(item)) {
+                        count++;
+                    }
                 }
             }
         }
