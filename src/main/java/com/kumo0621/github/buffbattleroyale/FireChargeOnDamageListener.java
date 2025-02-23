@@ -8,6 +8,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
@@ -22,9 +23,28 @@ public class FireChargeOnDamageListener implements Listener {
     public void onEntityDamage(EntityDamageEvent event) {
         if (!(event.getEntity() instanceof Player)) return;
         Player player = (Player) event.getEntity();
+
+        // スロット0～8に対象バフ ("firecharge") があるかチェック
+        if (!hasFireChargeBuff(player)) return;
+
         // ダメージを受けたとき、常に DEFAULT_VOLLEYS 分のファイヤーチャージを全方位に発射する
         spawnFireChargeVolleys(player, DEFAULT_VOLLEYS);
         player.sendMessage(ChatColor.GOLD + "Fire Charge Buff: " + DEFAULT_VOLLEYS + " volley(s) fired in all directions due to damage!");
+    }
+
+    /**
+     * プレイヤーのインベントリのスロット0～8に "firecharge" バフがあるかチェックするメソッド
+     */
+    private boolean hasFireChargeBuff(Player player) {
+        BuffItemData fireChargeBuff = BuffRegistry.getBuffItemById("firecharge");
+        if (fireChargeBuff == null) return false;
+        for (int slot = 0; slot < 9; slot++) {
+            ItemStack item = player.getInventory().getItem(slot);
+            if (item != null && fireChargeBuff.matches(item)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void spawnFireChargeVolleys(Player player, int volleys) {
