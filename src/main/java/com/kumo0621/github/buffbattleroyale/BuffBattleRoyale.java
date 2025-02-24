@@ -35,7 +35,9 @@ public class BuffBattleRoyale extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ShiftChibiZombieSummonListener(), this);
         getServer().getPluginManager().registerEvents(new ShiftBowBuffListener(), this);
         getServer().getPluginManager().registerEvents(new ShiftInvisibleListener(), this);
-        this.getCommand("fillchest").setExecutor(new FillChestCommand(buffChestManager));
+        NormalChestManager normalChestManager = new NormalChestManager();
+
+        this.getCommand("fillchest").setExecutor(new FillChestCommandCombined(buffChestManager, normalChestManager));
         buffChestManager = new BuffChestManager(this);
         buffChestManager.start();
         getServer().getPluginManager().registerEvents(new ChestOpenListener(this), this);

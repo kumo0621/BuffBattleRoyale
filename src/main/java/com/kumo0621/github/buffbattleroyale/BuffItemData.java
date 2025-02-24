@@ -108,7 +108,13 @@ public class BuffItemData {
         if (displayName != null && !displayName.isEmpty()) {
             meta.setDisplayName(displayName);
         }
+        // details があれば、改行区切りで lore に設定
+        if (details != null && !details.isEmpty()) {
+            // details を "\n" で分割し、リストに変換
+            meta.setLore(java.util.Arrays.asList(details.split("\n")));
+        }
         item.setItemMeta(meta);
         return item;
     }
+
 }
