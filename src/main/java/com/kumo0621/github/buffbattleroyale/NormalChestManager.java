@@ -15,10 +15,27 @@ public class NormalChestManager {
 
     public NormalChestManager() {
         // 以下は例示です。必要に応じて config.yml から読み込むなどしてください。
-        items.add(new NormalChestItem(new ItemStack(Material.EMERALD), 0.4));       // 40%
-        items.add(new NormalChestItem(new ItemStack(Material.IRON_SWORD), 0.3));     // 30%
-        items.add(new NormalChestItem(new ItemStack(Material.DIAMOND_AXE), 0.2));    // 20%
-        items.add(new NormalChestItem(new ItemStack(Material.GOLDEN_APPLE), 0.1));     // 10%
+        items.add(new NormalChestItem(new ItemStack(Material.COOKIE), 0.5));       // 40%
+        items.add(new NormalChestItem(new ItemStack(Material.COOKED_BEEF), 0.5));     // 30%
+        items.add(new NormalChestItem(new ItemStack(Material.WOODEN_SWORD), 0.4));    // 20%
+        items.add(new NormalChestItem(new ItemStack(Material.WOODEN_AXE), 0.4));
+        items.add(new NormalChestItem(new ItemStack(Material.STONE_SWORD), 0.4));
+        items.add(new NormalChestItem(new ItemStack(Material.STONE_AXE), 0.4));
+        items.add(new NormalChestItem(new ItemStack(Material.IRON_SWORD), 0.1));
+        items.add(new NormalChestItem(new ItemStack(Material.IRON_AXE), 0.1));
+        items.add(new NormalChestItem(new ItemStack(Material.LEATHER_BOOTS), 0.6));
+        items.add(new NormalChestItem(new ItemStack(Material.LEATHER_HELMET), 0.6));
+        items.add(new NormalChestItem(new ItemStack(Material.LEATHER_CHESTPLATE), 0.6));
+        items.add(new NormalChestItem(new ItemStack(Material.LEATHER_LEGGINGS), 0.6));
+        items.add(new NormalChestItem(new ItemStack(Material.IRON_BOOTS), 0.2));
+        items.add(new NormalChestItem(new ItemStack(Material.IRON_HELMET), 0.2));
+        items.add(new NormalChestItem(new ItemStack(Material.IRON_CHESTPLATE), 0.2));
+        items.add(new NormalChestItem(new ItemStack(Material.IRON_LEGGINGS), 0.2));
+        items.add(new NormalChestItem(new ItemStack(Material.DIAMOND_BOOTS), 0.1));
+        items.add(new NormalChestItem(new ItemStack(Material.DIAMOND_HELMET), 0.1));
+        items.add(new NormalChestItem(new ItemStack(Material.DIAMOND_CHESTPLATE), 0.1));
+        items.add(new NormalChestItem(new ItemStack(Material.DIAMOND_LEGGINGS), 0.1));
+
     }
 
     public List<NormalChestItem> getItems() {
