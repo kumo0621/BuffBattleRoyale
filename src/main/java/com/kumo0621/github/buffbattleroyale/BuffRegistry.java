@@ -102,7 +102,11 @@ public class BuffRegistry {
         // 新規：発行拒否バフ（custom model data 19 例示）
         registerBuffItem(new BuffItemData("glowreject", Material.PAPER, 19, null, "発光禁止","自身にかかる発光をキャンセルできる", 1,0.10));
         registerBuffItem(new BuffItemData("toxic", Material.PAPER, 20, null, "毒状態","殴った相手に1%で毒を付与", 1,0.10));
-        registerBuffItem(new BuffItemData("witherbuff", Material.PAPER, 21, null, "ウィザー付与","殴った相手に5%でウィザー状態を付与する", 1,0.10));
+        registerBuffItem(new BuffItemData("witherbuff", Material.PAPER, 21, null, "ウィザー付与","殴った相手に5%でウィザー状態を付es与する", 1,0.10));
         registerBuffItem(new BuffItemData("targetclear", Material.PAPER, 22, null, "敵対解除", "持ってシフトを押すと周囲3マスのモブが襲わなくなる",1,0.10));
+        registerBuffItem(new BuffItemData("effectdoubler", Material.PAPER, 23, null, "倍効果","自身についてるエフェクトを倍にする", 1,0.10));
+// BuffRegistry.java（静的初期化子内）
+        registerBuffItem(new BuffItemData("skeletonbat", Material.PAPER, 24, null, "コウモリ召喚", "15秒シフトを押してるとコウモリに乗ったスケルトンが召喚される", 1, 0.0));
+
     }
 }

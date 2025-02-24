@@ -1,5 +1,6 @@
 package com.kumo0621.github.buffbattleroyale;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class BuffBattleRoyale extends JavaPlugin {
@@ -46,6 +47,8 @@ public class BuffBattleRoyale extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new WitherEffectListener(), this);
         getServer().getPluginManager().registerEvents(new TargetClearListener(), this);
         getServer().getPluginManager().registerEvents(new TargetRetargetBlockerListener(), this);
+        Bukkit.getScheduler().runTaskTimer(this, new EffectDoublerTask(), 0L, 20L);
+        getServer().getPluginManager().registerEvents(new ShiftSkeletonBatSummonListener(), this);
         getLogger().info("BuffBattleRoyale プラグインが有効になりました。");
     }
 

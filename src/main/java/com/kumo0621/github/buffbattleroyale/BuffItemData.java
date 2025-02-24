@@ -21,7 +21,9 @@ public class BuffItemData {
     private final double chance; // 例：0.10 は10%の確率
     private final String details; // 詳細情報
 
-    // フルコンストラクタ
+    /**
+     * フルコンストラクタ
+     */
     public BuffItemData(String id, Material material, int customModelData, PotionEffectType effectType,
                         String displayName, String details, int buffLevel, SpecialEffect specialEffect, double chance) {
         this.id = id;
@@ -35,7 +37,9 @@ public class BuffItemData {
         this.chance = chance;
     }
 
-    // 特殊効果不要の場合のコンストラクタ
+    /**
+     * 特殊効果不要の場合のコンストラクタ
+     */
     public BuffItemData(String id, Material material, int customModelData, PotionEffectType effectType,
                         String displayName, String details, int buffLevel, double chance) {
         this(id, material, customModelData, effectType, displayName, details, buffLevel, null, chance);
