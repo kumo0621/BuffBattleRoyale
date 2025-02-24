@@ -72,20 +72,21 @@ public class ShiftChibiZombieSummonListener implements Listener {
 
     private int countShiftChibiZombieBuffs(Player player) {
         int count = 0;
+        // まず、指定されたバフIDで登録されたバフアイテムを取得
+        BuffItemData buffData = BuffRegistry.getBuffItemById(SHIFT_CHIBI_ZOMBIE_BUFF_ID);
+        if (buffData == null) {
+            return 0; // 取得できなければ 0 を返す
+        }
+        // ホットバー（スロット0～8）を走査
         for (int slot = BUFF_SLOT_START; slot <= BUFF_SLOT_END; slot++) {
             ItemStack item = player.getInventory().getItem(slot);
-            if (item != null) {
-                if (player.getInventory().getItemInMainHand() != null &&
-                    BuffRegistry.getBuffItemById(SHIFT_CHIBI_ZOMBIE_BUFF_ID).matches(player.getInventory().getItemInMainHand())) {
-                    BuffItemData buff = BuffRegistry.getBuffItemById(SHIFT_CHIBI_ZOMBIE_BUFF_ID);
-                    if (buff != null && buff.matches(item)) {
-                        count++;
-                    }
-                }
+            if (item != null && buffData.matches(item)) {
+                count++;
             }
         }
         return count;
     }
+
 
     private void spawnChibiZombiesForPlayer(Player player, int count) {
         for (int i = 0; i < count; i++) {

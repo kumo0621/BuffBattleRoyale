@@ -67,11 +67,11 @@ public class BuffRegistry {
         // 攻撃力バフ（Attack：INCREASE_DAMAGE）
         registerBuffItem(new BuffItemData("attack", Material.PAPER, 3, PotionEffectType.STRENGTH, "攻撃力上昇","", 1,0.10));
         registerBuffItem(new BuffItemData("attack2", Material.PAPER, 4, PotionEffectType.STRENGTH, "攻撃力上昇 (Level 2)","", 2,0.10));
-
+        registerBuffItem(new BuffItemData("attack3", Material.PAPER, 29, PotionEffectType.STRENGTH, "攻撃力上昇 (Level 3)","", 3,0.10));
         // 再生バフ（Resistance：DAMAGE_RESISTANCE）
         registerBuffItem(new BuffItemData("heel", Material.PAPER, 5, PotionEffectType.REGENERATION, "再生","", 1,0.10));
         registerBuffItem(new BuffItemData("heel2", Material.PAPER, 6, PotionEffectType.REGENERATION, "再生 (Level 2)","", 2,0.10));
-
+        registerBuffItem(new BuffItemData("heel3", Material.PAPER, 28, PotionEffectType.REGENERATION, "再生 (Level 3)","", 3,0.10));
         // ジャンプバフ（Jump：JUMP）
         registerBuffItem(new BuffItemData("jump", Material.PAPER, 7, PotionEffectType.JUMP_BOOST, "ジャンプ力上昇","", 1,0.10));
         registerBuffItem(new BuffItemData("jump2", Material.PAPER, 8, PotionEffectType.JUMP_BOOST, "ジャンプ力上昇 (Level 2)","", 2,0.10));
@@ -79,7 +79,7 @@ public class BuffRegistry {
         // 浮遊バフ（Levitation：LEVITATION）
         registerBuffItem(new BuffItemData("levitation", Material.PAPER, 9, PotionEffectType.LEVITATION, "浮遊","", 1,0.10));
         registerBuffItem(new BuffItemData("levitation2", Material.PAPER, 10, PotionEffectType.LEVITATION, "浮遊(Level 2)","", 2,0.10));
-
+        registerBuffItem(new BuffItemData("levitation3", Material.PAPER, 30, PotionEffectType.LEVITATION, "浮遊(Level 3)","", 3,0.10));
         // Lethal Hit Buff（特殊効果のみ：殴ったら1%の確率で相手を殺す）
         // ポーション効果は付与しないため、effectType は null、buffLevel は 0 としています。
         registerBuffItem(new BuffItemData("lethal", Material.PAPER, 11, null, "即死パンチ","1%で殴った相手を即死にする", 0, new LethalHitEffect(0.01),0.10));
@@ -89,6 +89,8 @@ public class BuffRegistry {
         //耐性
         registerBuffItem(new BuffItemData("resistance", Material.PAPER, 13, PotionEffectType.RESISTANCE, "耐性","", 1,0.10));
         registerBuffItem(new BuffItemData("resistance2", Material.PAPER, 14, PotionEffectType.RESISTANCE, "耐性 (Level 2)","", 2,0.10));
+        registerBuffItem(new BuffItemData("resistance3", Material.PAPER, 28, PotionEffectType.RESISTANCE, "耐性 (Level 3)","", 3,0.10));
+
         registerBuffItem(new BuffItemData("shiftcreeper", Material.PAPER, 15, null, "クリーパー召喚","15秒シフトを押すと召喚する", 1,0.10));
         registerBuffItem(new BuffItemData("shiftzombie", Material.PAPER, 16, null, "ゾンビ召喚","15秒シフトを押すとゾンビを召喚する", 1,0.10));
         registerBuffItem(new BuffItemData("shiftskeleton", Material.PAPER, 17, null, "スケルトン召喚","15秒シフトを押すとスケルトンを召喚する", 1,0.10));
@@ -106,7 +108,9 @@ public class BuffRegistry {
         registerBuffItem(new BuffItemData("targetclear", Material.PAPER, 22, null, "敵対解除", "持ってシフトを押すと周囲3マスのモブが襲わなくなる",1,0.10));
         registerBuffItem(new BuffItemData("effectdoubler", Material.PAPER, 23, null, "倍効果","自身についてるエフェクトを倍にする", 1,0.10));
 // BuffRegistry.java（静的初期化子内）
-        registerBuffItem(new BuffItemData("skeletonbat", Material.PAPER, 24, null, "コウモリ召喚", "15秒シフトを押してるとコウモリに乗ったスケルトンが召喚される", 1, 0.0));
-
+        registerBuffItem(new BuffItemData("skeletonbat", Material.PAPER, 24, null, "コウモリ召喚", "15秒シフトを押してるとコウモリに乗ったスケルトンが召喚される", 1, 0.10));
+        registerBuffItem(new BuffItemData("antidote", Material.PAPER, 25, null, "毒効果を解除", "シフトで毒エフェクトを解除します", 1, 0.10));
+        registerBuffItem(new BuffItemData("witherantidote", Material.PAPER, 26, null, "ウィザー状態を解除", "シフトでウィザー状態を解除します", 1, 0.10));
+        registerBuffItem(new BuffItemData("liferegen", Material.PAPER, 27, null, "ゾンビヒール", "ゾンビから攻撃を受けると回復します", 1, 0.0));
     }
 }

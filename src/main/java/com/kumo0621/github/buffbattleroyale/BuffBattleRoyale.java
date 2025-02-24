@@ -49,6 +49,9 @@ public class BuffBattleRoyale extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new TargetRetargetBlockerListener(), this);
         Bukkit.getScheduler().runTaskTimer(this, new EffectDoublerTask(), 0L, 20L);
         getServer().getPluginManager().registerEvents(new ShiftSkeletonBatSummonListener(), this);
+        getServer().getPluginManager().registerEvents(new AntidoteShiftListener(), this);
+        getServer().getPluginManager().registerEvents(new WitherAntidoteShiftListener(), this);
+        getServer().getPluginManager().registerEvents(new ZombieDamageHealListener(), this);
         getLogger().info("BuffBattleRoyale プラグインが有効になりました。");
     }
 
