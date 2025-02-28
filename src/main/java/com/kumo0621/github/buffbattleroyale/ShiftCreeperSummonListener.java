@@ -61,7 +61,7 @@ public class ShiftCreeperSummonListener implements Listener {
                 long startTime = sneakStartTimes.remove(playerId);
                 long durationMillis = System.currentTimeMillis() - startTime;
                 int durationSeconds = (int) (durationMillis / 1000);
-                int groups = durationSeconds / 15;
+                int groups = durationSeconds / 5;
                 int baseCount = 0;
                 if (groups >= 1) {
                     baseCount = 3 * (int) Math.pow(2, groups - 1);

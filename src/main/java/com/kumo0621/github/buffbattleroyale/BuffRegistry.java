@@ -84,22 +84,22 @@ public class BuffRegistry {
         // ポーション効果は付与しないため、effectType は null、buffLevel は 0 としています。
         registerBuffItem(new BuffItemData("lethal", Material.PAPER, 11, null, "即死パンチ","1%で殴った相手を即死にする", 0, new LethalHitEffect(0.01),0.02));
         //テレポート
-        registerBuffItem(new BuffItemData("teleport", Material.PAPER, 12, null, "テレポート","シフトを30秒押すとランダムなプレイヤーにテレポートする", 1, null,0.05));
+        registerBuffItem(new BuffItemData("teleport", Material.PAPER, 12, null, "テレポート","シフトを15秒押すとランダムなプレイヤーにテレポートする", 1, null,0.05));
 
         //耐性
         registerBuffItem(new BuffItemData("resistance", Material.PAPER, 13, PotionEffectType.RESISTANCE, "耐性","", 1,0.10));
         registerBuffItem(new BuffItemData("resistance2", Material.PAPER, 14, PotionEffectType.RESISTANCE, "耐性 (Level 2)","", 2,0.03));
         registerBuffItem(new BuffItemData("resistance3", Material.PAPER, 28, PotionEffectType.RESISTANCE, "耐性 (Level 3)","", 3,0.01));
 
-        registerBuffItem(new BuffItemData("shiftcreeper", Material.PAPER, 15, null, "クリーパー召喚","15秒シフトを押すと召喚する", 1,0.03));
-        registerBuffItem(new BuffItemData("shiftzombie", Material.PAPER, 16, null, "ゾンビ召喚","15秒シフトを押すとゾンビを召喚する", 1,0.03));
-        registerBuffItem(new BuffItemData("shiftskeleton", Material.PAPER, 17, null, "スケルトン召喚","15秒シフトを押すとスケルトンを召喚する", 1,0.03));
-        registerBuffItem(new BuffItemData("shiftbabyzombie", Material.PAPER, 18, null, "ベビーゾンビ召喚","15秒シフトを押すとベビーゾンビを召喚する", 1,0.03));
+        registerBuffItem(new BuffItemData("shiftcreeper", Material.PAPER, 15, null, "クリーパー召喚","5秒シフトを押すと召喚する", 1,0.03));
+        registerBuffItem(new BuffItemData("shiftzombie", Material.PAPER, 16, null, "ゾンビ召喚","5秒シフトを押すとゾンビを召喚する", 1,0.03));
+        registerBuffItem(new BuffItemData("shiftskeleton", Material.PAPER, 17, null, "スケルトン召喚","5秒シフトを押すとスケルトンを召喚する", 1,0.03));
+        registerBuffItem(new BuffItemData("shiftbabyzombie", Material.PAPER, 18, null, "ベビーゾンビ召喚","5秒シフトを押すとベビーゾンビを召喚する", 1,0.03));
         registerBuffItem(new BuffItemData("firecharge", Material.PAPER, 19, null, "ファイヤーチャージ発射","ダメージを受けるとファイヤーチャージを全方向に放つ", 1,0.04));
         registerBuffItem(new BuffItemData("shiftbow", Material.PAPER, 20, null, "矢召喚","シフトをちょっと長く押すと矢が出る。", 1,0.05));
         registerBuffItem(new BuffItemData("shiftinvisible", Material.PAPER, 21, null, "透明化","シフトを押している間透明化する",1,0.05));
-        registerBuffItem(new BuffItemData("shiftfillchest", Material.PAPER, 22, null,"アイテム出現","3分間シフトを押すとアイテムが手に入る", 1,0.02));
-        registerBuffItem(new BuffItemData("shiftdash", Material.PAPER, 23, null, "壁抜け","15マス前に移動する。（壁にも埋まる）", 1,0.03));
+        registerBuffItem(new BuffItemData("shiftfillchest", Material.PAPER, 22, null,"アイテム出現","1分間シフトを押すとアイテムが手に入る", 1,0.02));
+        registerBuffItem(new BuffItemData("shiftdash", Material.PAPER, 23, null, "壁抜け","20マス前に移動する。（壁にも埋まる）", 1,0.03));
         registerBuffItem(new BuffItemData("shiftglobalglow", Material.PAPER, 18, null, "全員強制発光","全員を発光させる", 1,0.08));
         // 新規：発行拒否バフ（custom model data 19 例示）
 
@@ -107,8 +107,8 @@ public class BuffRegistry {
         registerBuffItem(new BuffItemData("witherbuff", Material.PAPER, 21, null, "ウィザー付与","殴った相手に5%でウィザー状態を付与する", 1,0.04));
         registerBuffItem(new BuffItemData("targetclear", Material.PAPER, 22, null, "敵対解除", "持ってシフトを押すと周囲3マスのモブが襲わなくなる",1,0.08));
         registerBuffItem(new BuffItemData("effectdoubler", Material.PAPER, 23, null, "倍効果","自身についてるエフェクトを倍にする", 1,0.05));
-// BuffRegistry.java（静的初期化子内）
-        registerBuffItem(new BuffItemData("skeletonbat", Material.PAPER, 24, null, "コウモリ召喚", "15秒シフトを押してるとコウモリに乗ったスケルトンが召喚される", 1, 0.07));
+        // BuffRegistry.java（静的初期化子内）
+        registerBuffItem(new BuffItemData("skeletonbat", Material.PAPER, 24, null, "コウモリ召喚", "5秒シフトを押してるとコウモリに乗ったスケルトンが召喚される", 1, 0.07));
         registerBuffItem(new BuffItemData("antidote", Material.PAPER, 25, null, "毒効果を解除", "シフトで毒エフェクトを解除します", 1, 0.07));
         registerBuffItem(new BuffItemData("witherantidote", Material.PAPER, 26, null, "ウィザー状態を解除", "シフトでウィザー状態を解除します", 1, 0.07));
         registerBuffItem(new BuffItemData("liferegen", Material.PAPER, 27, null, "ゾンビヒール", "ゾンビから攻撃を受けると回復します", 1, 0.06));

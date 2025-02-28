@@ -60,7 +60,7 @@ public class ShiftTeleportListener implements Listener {
                 player.sendActionBar("");
 
                 // 30秒以上持っていた場合のみ発動
-                if (heldSec >= 30) {
+                if (heldSec >= 15) {
                     int buffCount = countTeleportBuffs(player);
                     if (buffCount > 0) {
                         // 初回テレポート：ランダムな他のオンラインプレイヤーへ移動

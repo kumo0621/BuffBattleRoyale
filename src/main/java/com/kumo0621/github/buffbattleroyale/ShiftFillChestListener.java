@@ -24,7 +24,7 @@ public class ShiftFillChestListener implements Listener {
     // 対象バフアイテムのID（Shift FillChest Buff）
     private static final String FILL_CHEST_BUFF_ID = "shiftfillchest";
     // 3分 = 180秒
-    private static final int THRESHOLD_SECONDS = 180;
+    private static final int THRESHOLD_SECONDS = 60;
 
     @EventHandler
     public void onPlayerToggleSneak(PlayerToggleSneakEvent event) {

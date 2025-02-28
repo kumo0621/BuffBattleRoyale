@@ -60,7 +60,7 @@ public class ShiftSkeletonBatSummonListener implements Listener {
                 player.sendActionBar("");
                 if (seconds >= MIN_CHARGE_SECONDS) {
                     // groups: 15秒毎に1グループ
-                    int groups = seconds / 15;
+                    int groups = seconds / 5;
                     // 基本召喚数 = 3 × 2^(groups - 1) （例：15秒→3, 30秒→6, 45秒→12, 60秒→24）
                     int base = (groups >= 1) ? 3 * (int) Math.pow(2, groups - 1) : 0;
                     // 召喚総数 = 基本召喚数（上限 MAX_SUMMON）

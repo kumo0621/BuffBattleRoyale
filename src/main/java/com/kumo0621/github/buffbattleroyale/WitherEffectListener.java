@@ -18,7 +18,7 @@ public class WitherEffectListener implements Listener {
     // 1個あたりの付与確率（5%）
     private static final double PER_BUFF_CHANCE = 0.05;
     // 毒効果の持続時間：2秒（2×20 = 40 tick）
-    private static final int WITHER_DURATION = 40;
+    private static final int WITHER_DURATION = 200;
 
     private final Random random = new Random();
 
