@@ -103,14 +103,14 @@ public class BuffRegistry {
         registerBuffItem(new BuffItemData("shiftglobalglow", Material.PAPER, 18, null, "全員強制発光","全員を発光させる", 1,0.08));
         // 新規：発行拒否バフ（custom model data 19 例示）
 
-        registerBuffItem(new BuffItemData("toxic", Material.PAPER, 20, null, "毒状態","殴った相手に1%で毒を付与", 1,0.07));
-        registerBuffItem(new BuffItemData("witherbuff", Material.PAPER, 21, null, "ウィザー付与","殴った相手に5%でウィザー状態を付与する", 1,0.04));
-        registerBuffItem(new BuffItemData("targetclear", Material.PAPER, 22, null, "敵対解除", "持ってシフトを押すと周囲3マスのモブが襲わなくなる",1,0.08));
-        registerBuffItem(new BuffItemData("effectdoubler", Material.PAPER, 23, null, "倍効果","自身についてるエフェクトを倍にする", 1,0.05));
+        registerBuffItem(new BuffItemData("toxic", Material.PAPER, 24, null, "毒状態","殴った相手に1%で毒を付与", 1,0.07));
+        registerBuffItem(new BuffItemData("witherbuff", Material.PAPER, 25, null, "ウィザー付与","殴った相手に5%でウィザー状態を付与する", 1,0.04));
+        registerBuffItem(new BuffItemData("targetclear", Material.PAPER, 26, null, "敵対解除", "持ってシフトを押すと周囲3マスのモブが襲わなくなる",1,0.08));
+        registerBuffItem(new BuffItemData("effectdoubler", Material.PAPER, 27, null, "倍効果","自身についてるエフェクトを倍にする", 1,0.05));
         // BuffRegistry.java（静的初期化子内）
-        registerBuffItem(new BuffItemData("skeletonbat", Material.PAPER, 24, null, "コウモリ召喚", "5秒シフトを押してるとコウモリに乗ったスケルトンが召喚される", 1, 0.07));
-        registerBuffItem(new BuffItemData("antidote", Material.PAPER, 25, null, "毒効果を解除", "シフトで毒エフェクトを解除します", 1, 0.07));
-        registerBuffItem(new BuffItemData("witherantidote", Material.PAPER, 26, null, "ウィザー状態を解除", "シフトでウィザー状態を解除します", 1, 0.07));
-        registerBuffItem(new BuffItemData("liferegen", Material.PAPER, 27, null, "ゾンビヒール", "ゾンビから攻撃を受けると回復します", 1, 0.06));
+        registerBuffItem(new BuffItemData("skeletonbat", Material.PAPER, 31, null, "コウモリ召喚", "5秒シフトを押してるとコウモリに乗ったスケルトンが召喚される", 1, 0.07));
+        registerBuffItem(new BuffItemData("antidote", Material.PAPER, 32, null, "毒効果を解除", "シフトで毒エフェクトを解除します", 1, 0.07));
+        registerBuffItem(new BuffItemData("witherantidote", Material.PAPER, 33, null, "ウィザー状態を解除", "シフトでウィザー状態を解除します", 1, 0.07));
+        registerBuffItem(new BuffItemData("liferegen", Material.PAPER, 34, null, "ゾンビヒール", "ゾンビから攻撃を受けると回復します", 1, 0.06));
     }
 }
