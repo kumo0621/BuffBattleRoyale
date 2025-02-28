@@ -1,5 +1,4 @@
 chests:
-  - world: world
-    x: -218
-    y: 4
-    z: 37
+  x: -218
+  y: 4
+  z: 37
