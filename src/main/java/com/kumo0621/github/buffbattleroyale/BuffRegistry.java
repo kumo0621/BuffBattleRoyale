@@ -100,7 +100,7 @@ public class BuffRegistry {
         registerBuffItem(new BuffItemData("shiftinvisible", Material.PAPER, 21, null, "透明化","シフトを押している間透明化する",1,0.05));
         registerBuffItem(new BuffItemData("shiftfillchest", Material.PAPER, 22, null,"アイテム出現","1分間シフトを押すとアイテムが手に入る", 1,0.02));
         registerBuffItem(new BuffItemData("shiftdash", Material.PAPER, 23, null, "壁抜け","20マス前に移動する。（壁にも埋まる）", 1,0.03));
-        registerBuffItem(new BuffItemData("shiftglobalglow", Material.PAPER, 18, null, "全員強制発光","全員を発光させる", 1,0.08));
+        registerBuffItem(new BuffItemData("shiftglobalglow", Material.PAPER, 38, null, "全員強制発光","全員を発光させる", 1,0.08));
         // 新規：発行拒否バフ（custom model data 19 例示）
 
         registerBuffItem(new BuffItemData("toxic", Material.PAPER, 24, null, "毒状態","殴った相手に1%で毒を付与", 1,0.07));
@@ -112,8 +112,8 @@ public class BuffRegistry {
         registerBuffItem(new BuffItemData("antidote", Material.PAPER, 32, null, "毒効果を解除", "シフトで毒エフェクトを解除します", 1, 0.07));
         registerBuffItem(new BuffItemData("witherantidote", Material.PAPER, 33, null, "ウィザー状態を解除", "シフトでウィザー状態を解除します", 1, 0.07));
         registerBuffItem(new BuffItemData("liferegen", Material.PAPER, 34, null, "ゾンビヒール", "ゾンビから攻撃を受けると回復します", 1, 0.06));
-        registerBuffItem(new BuffItemData("saturation", Material.PAPER, 35, PotionEffectType.SATURATION, "満腹度上昇","", 1,0.03));
-        registerBuffItem(new BuffItemData("saturation2", Material.PAPER, 36, PotionEffectType.SATURATION, "満腹度上昇(Level 2)","", 2,0.01));
-        registerBuffItem(new BuffItemData("timeflip", Material.PAPER, 37, null, "昼夜逆転", "昼なら夜に、夜なら昼に変更します", 1, 0.08));
+        registerBuffItem(new BuffItemData("saturation", Material.PAPER, 39, PotionEffectType.SATURATION, "満腹度上昇","", 1,0.03));
+        registerBuffItem(new BuffItemData("saturation2", Material.PAPER, 40, PotionEffectType.SATURATION, "満腹度上昇(Level 2)","", 2,0.01));
+        registerBuffItem(new BuffItemData("timeflip", Material.PAPER, 41, null, "昼夜逆転", "昼なら夜に、夜なら昼に変更します", 1, 0.08));
     }
 }
