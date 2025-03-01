@@ -89,7 +89,7 @@ public class BuffRegistry {
         //耐性
         registerBuffItem(new BuffItemData("resistance", Material.PAPER, 13, PotionEffectType.RESISTANCE, "耐性","", 1,0.10));
         registerBuffItem(new BuffItemData("resistance2", Material.PAPER, 14, PotionEffectType.RESISTANCE, "耐性 (Level 2)","", 2,0.03));
-        registerBuffItem(new BuffItemData("resistance3", Material.PAPER, 28, PotionEffectType.RESISTANCE, "耐性 (Level 3)","", 3,0.01));
+        registerBuffItem(new BuffItemData("resistance3", Material.PAPER, 35, PotionEffectType.RESISTANCE, "耐性 (Level 3)","", 3,0.01));
 
         registerBuffItem(new BuffItemData("shiftcreeper", Material.PAPER, 15, null, "クリーパー召喚","5秒シフトを押すと召喚する", 1,0.03));
         registerBuffItem(new BuffItemData("shiftzombie", Material.PAPER, 16, null, "ゾンビ召喚","5秒シフトを押すとゾンビを召喚する", 1,0.03));
