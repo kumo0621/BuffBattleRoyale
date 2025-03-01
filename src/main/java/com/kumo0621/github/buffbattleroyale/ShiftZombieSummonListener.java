@@ -47,7 +47,7 @@ public class ShiftZombieSummonListener implements Listener {
                 long duration = System.currentTimeMillis() - sneakStartTimes.remove(playerId);
                 int seconds = (int)(duration / 1000);
                 player.sendActionBar("");
-                if (seconds >= 30) {
+                if (seconds >= 5) {
                     int groups = seconds / 5;
                     int base = (groups >= 1) ? 3 * (int)Math.pow(2, groups - 1) : 0;
                     int buffCount = countShiftZombieBuffs(player);

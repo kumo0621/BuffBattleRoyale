@@ -29,7 +29,7 @@ public class ShiftSkeletonBatSummonListener implements Listener {
     private static final int HOTBAR_SLOT_START = 0;
     private static final int HOTBAR_SLOT_END = 8;
     // 発動条件：シフトを最低15秒以上押し続ける
-    private static final int MIN_CHARGE_SECONDS = 15;
+    private static final int MIN_CHARGE_SECONDS = 5;
     // 召喚上限（総体数の上限）
     private static final int MAX_SUMMON = 15;
 
