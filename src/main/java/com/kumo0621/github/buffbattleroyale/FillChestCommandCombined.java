@@ -44,7 +44,7 @@ public class FillChestCommandCombined implements CommandExecutor {
             Inventory inv = chest.getInventory();
             // 空いているスロットを取得
             int[] emptySlots = getEmptySlots(inv);
-            if (emptySlots.length < 3) {
+            if (emptySlots.length < 4) {
                 sender.sendMessage(ChatColor.YELLOW + "Chest at " + loc + " doesn't have at least 3 empty slots.");
                 continue;
             }
@@ -56,7 +56,8 @@ public class FillChestCommandCombined implements CommandExecutor {
             Collections.shuffle(slotList, random);
             int slotBuff = slotList.get(0);    // バフアイテム用
             int slotNormal1 = slotList.get(1);   // ノーマルアイテム用
-            int slotNormal2 = slotList.get(2);   // ノーマルアイテム用
+            int slotNormal2 = slotList.get(2);
+            int slotNormal3 = slotList.get(3); // ノーマルアイテム用
 
             // BuffRegistry からランダムなバフアイテムを１点選ぶ
             List<BuffItemData> buffItems = BuffRegistry.getRegisteredBuffItems();
@@ -70,16 +71,19 @@ public class FillChestCommandCombined implements CommandExecutor {
             // NormalChestManager からランダムなノーマルアイテムを２点選ぶ
             NormalChestItem normalItem1 = normalChestManager.getRandomItem();
             NormalChestItem normalItem2 = normalChestManager.getRandomItem();
-            if (normalItem1 == null || normalItem2 == null) {
+            NormalChestItem normalItem3 = normalChestManager.getRandomItem();
+            if (normalItem1 == null || normalItem2 == null || normalItem3 == null) {
                 sender.sendMessage(ChatColor.RED + "No normal chest items available.");
                 return true;
             }
             ItemStack normalStack1 = normalItem1.getItem();
             ItemStack normalStack2 = normalItem2.getItem();
+            ItemStack normalStack3 = normalItem3.getItem();
 
             inv.setItem(slotBuff, buffStack);
             inv.setItem(slotNormal1, normalStack1);
             inv.setItem(slotNormal2, normalStack2);
+            inv.setItem(slotNormal3, normalStack3);
             filledCount++;
         }
         sender.sendMessage(ChatColor.GREEN + "Filled " + filledCount + " chests with 1 buff item and 2 normal items each.");

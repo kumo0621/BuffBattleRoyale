@@ -15,8 +15,9 @@ public class NormalChestManager {
 
     public NormalChestManager() {
         // 以下は例示です。必要に応じて config.yml から読み込むなどしてください。
-        items.add(new NormalChestItem(new ItemStack(Material.COOKIE), 0.8));       // 40%
-        items.add(new NormalChestItem(new ItemStack(Material.COOKED_BEEF), 0.8));     // 30%
+        items.add(new NormalChestItem(new ItemStack(Material.COOKIE), 1.0));       // 40%
+        items.add(new NormalChestItem(new ItemStack(Material.COOKED_BEEF), 0.9));
+        items.add(new NormalChestItem(new ItemStack(Material.ARROW), 0.6));  // 30%
         items.add(new NormalChestItem(new ItemStack(Material.WOODEN_SWORD), 0.5));    // 20%
         items.add(new NormalChestItem(new ItemStack(Material.WOODEN_AXE), 0.5));
         items.add(new NormalChestItem(new ItemStack(Material.STONE_SWORD), 0.5));

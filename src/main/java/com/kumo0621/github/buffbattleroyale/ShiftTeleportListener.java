@@ -2,7 +2,12 @@ package com.kumo0621.github.buffbattleroyale;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
+import org.bukkit.Location;
+import org.bukkit.entity.Bat;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Skeleton;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
@@ -16,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ShiftTeleportListener implements Listener {
-    // 有効なバフスロット（9～17番）
+    // 有効なバフスロット（0～8）
     private final int BUFF_SLOT_START = 0;
     private final int BUFF_SLOT_END = 8;
 
@@ -28,13 +33,22 @@ public class ShiftTeleportListener implements Listener {
 
     private final Random random = new Random();
 
+    // 発動条件：シフトを最低15秒以上押し続ける
+    private static final int MIN_CHARGE_SECONDS = 15;
+    // 追加テレポートの間隔（200 ticks = 10秒）
+    private static final long TELEPORT_INTERVAL = 200L;
+
     @EventHandler
     public void onPlayerToggleSneak(PlayerToggleSneakEvent event) {
         Player player = event.getPlayer();
+        // アドベンチャーモード以外は処理しない
+        if (!player.getGameMode().equals(GameMode.ADVENTURE)) {
+            return;
+        }
         UUID playerId = player.getUniqueId();
 
         if (event.isSneaking()) {
-            // シフト開始：テレポートバフを所持しているかチェック
+            // シフト開始：ホットバー（0～8）に "teleport" バフがあるかチェック
             int buffCount = countTeleportBuffs(player);
             if (buffCount > 0) {
                 long startTime = System.currentTimeMillis();
@@ -48,9 +62,8 @@ public class ShiftTeleportListener implements Listener {
                 chargeTasks.put(playerId, task);
             }
         } else {
-            // シフト解除：もし記録があれば
+            // シフト解除：記録があれば処理
             if (sneakStartTimes.containsKey(playerId)) {
-                // キャンセルしてチャージ表示を消去
                 BukkitTask chargeTask = chargeTasks.remove(playerId);
                 if (chargeTask != null) {
                     chargeTask.cancel();
@@ -59,8 +72,7 @@ public class ShiftTeleportListener implements Listener {
                 int heldSec = (int)(heldMillis / 1000);
                 player.sendActionBar("");
 
-                // 30秒以上持っていた場合のみ発動
-                if (heldSec >= 15) {
+                if (heldSec >= MIN_CHARGE_SECONDS) {
                     int buffCount = countTeleportBuffs(player);
                     if (buffCount > 0) {
                         // 初回テレポート：ランダムな他のオンラインプレイヤーへ移動
@@ -77,36 +89,38 @@ public class ShiftTeleportListener implements Listener {
                                 Bukkit.getScheduler().cancelTask(teleportTasks.get(playerId).getTaskId());
                                 teleportTasks.remove(playerId);
                             }
-                        }, 200L, 200L); // 200 ticks = 10秒
+                        }, TELEPORT_INTERVAL, TELEPORT_INTERVAL);
                         teleportTasks.put(playerId, tpTask);
                         player.sendMessage(ChatColor.LIGHT_PURPLE + "Teleport buff activated: You will be teleported " + totalTeleports + " additional times at 10 sec intervals.");
                     }
                 } else {
-                    player.sendMessage(ChatColor.YELLOW + "Teleport charge insufficient (hold at least 30 sec).");
+                    player.sendMessage(ChatColor.YELLOW + "Teleport charge insufficient (hold at least 15 sec).");
                 }
             }
         }
     }
 
-    // 対象スロットにある "teleport" バフの個数をカウント（上限4）
+    /**
+     * ホットバー（0～8）にある "teleport" バフの個数をカウントする。
+     * ※ このバフは BuffRegistry に "teleport" として登録されているものとします。
+     */
     private int countTeleportBuffs(Player player) {
         int count = 0;
+        BuffItemData buffData = BuffRegistry.getBuffItemById("teleport");
+        if (buffData == null) return 0;
         for (int slot = BUFF_SLOT_START; slot <= BUFF_SLOT_END; slot++) {
             ItemStack item = player.getInventory().getItem(slot);
-            if (item != null) {
-                if (player.getInventory().getItemInMainHand() != null &&
-                    BuffRegistry.getBuffItemById("teleport").matches(player.getInventory().getItemInMainHand())) {
-                    BuffItemData buff = BuffRegistry.getBuffItemById("teleport");
-                    if (buff != null && buff.matches(item)) {
-                        count++;
-                    }
-                }
+            if (item != null && buffData.matches(item)) {
+                count++;
             }
         }
         return Math.min(count, 4);
     }
 
-    // ランダムな他のオンラインプレイヤーへテレポート（self除外）
+    /**
+     * ランダムな他のオンラインプレイヤーへテレポートする（前回のターゲットと同じなら再度選ぶ）。
+     * lastTarget は前回のターゲットを除外するために利用できますが、null であれば無視します。
+     */
     private void teleportToRandomPlayer(Player player, Player lastTarget) {
         List<Player> others = new ArrayList<>(Bukkit.getOnlinePlayers());
         others.remove(player);

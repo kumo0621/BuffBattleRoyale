@@ -44,9 +44,12 @@ public class TimeFlipShiftListener implements Listener {
         BuffItemData buff = BuffRegistry.getBuffItemById(TIMEFLIP_BUFF_ID);
         if (buff == null) return false;
         for (int slot = HOTBAR_SLOT_START; slot <= HOTBAR_SLOT_END; slot++) {
-            ItemStack item = player.getInventory().getItem(slot);
-            if (item != null && buff.matches(item)) {
-                return true;
+            if (player.getInventory().getItemInMainHand() != null &&
+                    BuffRegistry.getBuffItemById(TIMEFLIP_BUFF_ID).matches(player.getInventory().getItemInMainHand())) {
+                ItemStack item = player.getInventory().getItem(slot);
+                if (item != null && buff.matches(item)) {
+                    return true;
+                }
             }
         }
         return false;
