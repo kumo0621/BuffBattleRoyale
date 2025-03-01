@@ -112,5 +112,8 @@ public class BuffRegistry {
         registerBuffItem(new BuffItemData("antidote", Material.PAPER, 32, null, "毒効果を解除", "シフトで毒エフェクトを解除します", 1, 0.07));
         registerBuffItem(new BuffItemData("witherantidote", Material.PAPER, 33, null, "ウィザー状態を解除", "シフトでウィザー状態を解除します", 1, 0.07));
         registerBuffItem(new BuffItemData("liferegen", Material.PAPER, 34, null, "ゾンビヒール", "ゾンビから攻撃を受けると回復します", 1, 0.06));
+        registerBuffItem(new BuffItemData("saturation", Material.PAPER, 35, PotionEffectType.SATURATION, "満腹度上昇","", 1,0.05));
+        registerBuffItem(new BuffItemData("saturation2", Material.PAPER, 36, PotionEffectType.SATURATION, "満腹度上昇(Level 2)","", 2,0.03));
+        registerBuffItem(new BuffItemData("timeflip", Material.PAPER, 37, null, "昼夜逆転", "昼なら夜に、夜なら昼に変更します", 1, 0.08));
     }
 }

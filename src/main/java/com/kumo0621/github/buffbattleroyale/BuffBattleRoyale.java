@@ -54,6 +54,7 @@ public class BuffBattleRoyale extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new AntidoteShiftListener(), this);
         getServer().getPluginManager().registerEvents(new WitherAntidoteShiftListener(), this);
         getServer().getPluginManager().registerEvents(new ZombieDamageHealListener(), this);
+        getServer().getPluginManager().registerEvents(new TimeFlipShiftListener(), this);
         getLogger().info("BuffBattleRoyale プラグインが有効になりました。");
     }
 
