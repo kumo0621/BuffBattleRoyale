@@ -6,14 +6,25 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class BuffBattleRoyale extends JavaPlugin {
     private static BuffBattleRoyale instance;
     private BuffChestManager buffChestManager;
+
     @Override
     public void onEnable() {
         instance = this;
+
+        // デフォルトconfigを保存
+        this.saveDefaultConfig();
+
+        // BuffRegistryの初期化
+        BuffRegistry.init(this);
+        BuffRegistry.loadConfig();
+        BuffRegistry.saveDefaultConfig();
+
         // BuffManager の起動（ポーション効果の更新）
         BuffManager.getInstance().start(this);
-        this.saveDefaultConfig();
-        BuffChestManager buffChestManager = new BuffChestManager(this);
-        BuffManager.getInstance().start(this);
+
+        buffChestManager = new BuffChestManager(this);
+        buffChestManager.start();
+
         // コマンド "buffitem" の登録（タブ補完付き）
         GiveBuffItemCommand giveCommand = new GiveBuffItemCommand();
         this.getCommand("buffitem").setExecutor(giveCommand);
@@ -35,11 +46,10 @@ public class BuffBattleRoyale extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ShiftChibiZombieSummonListener(), this);
         getServer().getPluginManager().registerEvents(new ShiftBowBuffListener(), this);
         getServer().getPluginManager().registerEvents(new ShiftInvisibleListener(), this);
-        NormalChestManager normalChestManager = new NormalChestManager();
 
+        NormalChestManager normalChestManager = new NormalChestManager();
         this.getCommand("fillchest").setExecutor(new FillChestCommandCombined(buffChestManager, normalChestManager));
-        buffChestManager = new BuffChestManager(this);
-        buffChestManager.start();
+
         getServer().getPluginManager().registerEvents(new ChestOpenListener(this), this);
         getServer().getPluginManager().registerEvents(new FireChargeOnDamageListener(), this);
         getServer().getPluginManager().registerEvents(new ShiftFillChestListener(), this);
@@ -66,6 +76,7 @@ public class BuffBattleRoyale extends JavaPlugin {
         }
         getLogger().info("BuffBattleRoyale プラグインが無効になりました。");
     }
+
     public static BuffBattleRoyale getInstance() {
         return instance;
     }

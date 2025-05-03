@@ -1,10 +1,13 @@
 package com.kumo0621.github.buffbattleroyale;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.potion.PotionEffectType;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import org.bukkit.Material;
-import org.bukkit.potion.PotionEffectType;
 
 /**
  * バフアイテムの登録・管理を行うクラスです。
@@ -13,6 +16,14 @@ import org.bukkit.potion.PotionEffectType;
 public class BuffRegistry {
 
     private static final List<BuffItemData> buffItems = new ArrayList<>();
+    private static BuffBattleRoyale plugin;
+
+    /**
+     * プラグインインスタンスを設定し、初期化します。
+     */
+    public static void init(BuffBattleRoyale plugin) {
+        BuffRegistry.plugin = plugin;
+    }
 
     /**
      * バフアイテムを登録します。
@@ -30,6 +41,21 @@ public class BuffRegistry {
      */
     public static List<BuffItemData> getRegisteredBuffItems() {
         return Collections.unmodifiableList(buffItems);
+    }
+
+    /**
+     * 有効なバフアイテムのリストを返します。
+     *
+     * @return 有効なバフアイテムのリスト
+     */
+    public static List<BuffItemData> getEnabledBuffItems() {
+        List<BuffItemData> enabledItems = new ArrayList<>();
+        for (BuffItemData item : buffItems) {
+            if (item.isEnabled()) {
+                enabledItems.add(item);
+            }
+        }
+        return enabledItems;
     }
 
     /**
@@ -56,6 +82,51 @@ public class BuffRegistry {
             }
         }
         return null;
+    }
+
+    /**
+     * Configファイルから設定を読み込みます。
+     */
+    public static void loadConfig() {
+        if (plugin == null) {
+            Bukkit.getLogger().warning("BuffRegistry: プラグインインスタンスが設定されていません。");
+            return;
+        }
+
+        for (BuffItemData item : buffItems) {
+            String path = "buff-items." + item.getId() + ".enabled";
+            if (plugin.getConfig().contains(path)) {
+                boolean enabled = plugin.getConfig().getBoolean(path);
+                item.setEnabled(enabled);
+                Bukkit.getLogger().info("バフアイテム " + item.getId() + " の有効設定: " + enabled);
+            }
+        }
+    }
+
+    /**
+     * デフォルトのConfigを生成します。
+     */
+    public static void saveDefaultConfig() {
+        if (plugin == null) {
+            Bukkit.getLogger().warning("BuffRegistry: プラグインインスタンスが設定されていません。");
+            return;
+        }
+
+        FileConfiguration config = plugin.getConfig();
+        boolean needsSave = false;
+
+        for (BuffItemData item : buffItems) {
+            String path = "buff-items." + item.getId() + ".enabled";
+            if (!config.contains(path)) {
+                config.set(path, true);  // デフォルトでは全て有効
+                needsSave = true;
+            }
+        }
+
+        if (needsSave) {
+            plugin.saveConfig();
+            Bukkit.getLogger().info("バフアイテムの有効設定をconfigに保存しました。");
+        }
     }
 
     // 静的初期化子：ここでバフアイテムを登録

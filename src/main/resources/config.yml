@@ -1,4 +1,89 @@
+buff-items:
+  speed:
+    enabled: true
+  speed2:
+    enabled: true
+  attack:
+    enabled: true
+  attack2:
+    enabled: true
+  attack3:
+    enabled: true
+  heel:
+    enabled: true
+  heel2:
+    enabled: true
+  heel3:
+    enabled: true
+  jump:
+    enabled: true
+  jump2:
+    enabled: true
+  levitation:
+    enabled: true
+  levitation2:
+    enabled: true
+  levitation3:
+    enabled: true
+  lethal:
+    enabled: true
+  teleport:
+    enabled: true
+  resistance:
+    enabled: true
+  resistance2:
+    enabled: true
+  resistance3:
+    enabled: true
+  shiftcreeper:
+    enabled: true
+  shiftzombie:
+    enabled: true
+  shiftskeleton:
+    enabled: true
+  shiftbabyzombie:
+    enabled: true
+  firecharge:
+    enabled: true
+  shiftbow:
+    enabled: true
+  shiftinvisible:
+    enabled: true
+  shiftfillchest:
+    enabled: true
+  shiftdash:
+    enabled: true
+  shiftglobalglow:
+    enabled: true
+  toxic:
+    enabled: true
+  witherbuff:
+    enabled: true
+  targetclear:
+    enabled: true
+  effectdoubler:
+    enabled: true
+  skeletonbat:
+    enabled: true
+  antidote:
+    enabled: true
+  witherantidote:
+    enabled: true
+  liferegen:
+    enabled: true
+  saturation:
+    enabled: true
+  saturation2:
+    enabled: true
+  timeflip:
+    enabled: true
+
 chests:
-  x: -218
-  y: 4
-  z: 37
+  - world: world
+    x: -96
+    y: 17
+    z: -56
+  - world: world
+    x: -218
+    y: 4
+    z: 37

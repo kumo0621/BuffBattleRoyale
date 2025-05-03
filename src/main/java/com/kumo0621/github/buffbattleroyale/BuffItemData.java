@@ -20,12 +20,29 @@ public class BuffItemData {
     private final SpecialEffect specialEffect; // 特殊効果。通常のバフは null。
     private final double chance; // 例：0.10 は10%の確率
     private final String details; // 詳細情報
+    private boolean enabled = true; // デフォルトはtrue（有効）
 
     /**
      * フルコンストラクタ
      */
     public BuffItemData(String id, Material material, int customModelData, PotionEffectType effectType,
                         String displayName, String details, int buffLevel, SpecialEffect specialEffect, double chance) {
+        this(id, material, customModelData, effectType, displayName, details, buffLevel, specialEffect, chance, true);
+    }
+
+    /**
+     * 特殊効果不要の場合のコンストラクタ
+     */
+    public BuffItemData(String id, Material material, int customModelData, PotionEffectType effectType,
+                        String displayName, String details, int buffLevel, double chance) {
+        this(id, material, customModelData, effectType, displayName, details, buffLevel, null, chance, true);
+    }
+
+    /**
+     * フルコンストラクタ（enabled付き）
+     */
+    public BuffItemData(String id, Material material, int customModelData, PotionEffectType effectType,
+                        String displayName, String details, int buffLevel, SpecialEffect specialEffect, double chance, boolean enabled) {
         this.id = id;
         this.material = material;
         this.customModelData = customModelData;
@@ -35,14 +52,7 @@ public class BuffItemData {
         this.buffLevel = buffLevel;
         this.specialEffect = specialEffect;
         this.chance = chance;
-    }
-
-    /**
-     * 特殊効果不要の場合のコンストラクタ
-     */
-    public BuffItemData(String id, Material material, int customModelData, PotionEffectType effectType,
-                        String displayName, String details, int buffLevel, double chance) {
-        this(id, material, customModelData, effectType, displayName, details, buffLevel, null, chance);
+        this.enabled = enabled;
     }
 
     public String getId() {
@@ -81,6 +91,14 @@ public class BuffItemData {
         return details;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     /**
      * 指定された ItemStack がこのバフアイテムと一致するか判定します。
      */
@@ -116,5 +134,4 @@ public class BuffItemData {
         item.setItemMeta(meta);
         return item;
     }
-
 }
